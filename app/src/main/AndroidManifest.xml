@@ -12,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NSLDizimo"
         tools:targetApi="31">
-
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="true">
+            android:name=".activity.ContainerActivity"
+            android:exported="true"
+            android:label="@string/title_activity_container"
+            android:theme="@style/Theme.NSLDizimo.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,13 +28,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.Listar"
+            android:name=".activity.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -53,7 +50,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
     </application>
 
 </manifest>

@@ -44,13 +44,7 @@ public class ContagemDizimo extends AppCompatActivity {
                         return true;
                 }
 
-                switch(item.getItemId()){
-                    case R.id.listar:
-                        startActivity(new Intent(getApplicationContext(),Listar.class));
 
-                        return true;
-
-                }
 
 
                 return false;

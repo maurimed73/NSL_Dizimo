@@ -3,8 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Excluir"
-        android:onClick="excluir"/>
+        android:id="@+id/excluir"
+
+        />
     <item android:title="Atualizar"
-        android:onClick="atualizar"
+        android:id="@+id/atualizar"
+
         />
 </menu>

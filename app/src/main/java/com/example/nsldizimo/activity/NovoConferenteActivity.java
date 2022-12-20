@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -57,10 +61,11 @@ public class NovoConferenteActivity extends AppCompatActivity {
         listViewConferentes.setAdapter(adaptador);
         registerForContextMenu(listViewConferentes);
 
-
         BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.listar);
         badgeDrawable.setVisible(true);
         badgeDrawable.setNumber(8);
+
+
 
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -78,13 +83,7 @@ public class NovoConferenteActivity extends AppCompatActivity {
                        return true;
                 }
 
-                switch(item.getItemId()){
-                    case R.id.listar:
-                        startActivity(new Intent(getApplicationContext(),Listar.class));
 
-                        return true;
-
-                }
 
 
                 return false;
@@ -97,16 +96,20 @@ public class NovoConferenteActivity extends AppCompatActivity {
             Conferente a = new Conferente();
             a.setNomeConferente(nomeConferente.getText().toString());
             long id = dao.inserir(a);
-            Toast.makeText(this, "Conferente inserido com o id " + id, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Conferente inserido", Toast.LENGTH_SHORT).show();
             atualizaListView();
             closeKeyboard(view);
+            idConfer=null;
+
             
         }
             else{
                 conferenteAtualizar.setNomeConferente(nomeConferente.getText().toString());
                 dao.atualizar(conferenteAtualizar);
-            Toast.makeText(this, "Atualizado com sucesso ID " + idConfer, Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, "Atualizado com sucesso", Toast.LENGTH_SHORT).show();
+            atualizaListView();
+            closeKeyboard(view);
+            idConfer=null;
 
         }
         }
@@ -126,6 +129,7 @@ public class NovoConferenteActivity extends AppCompatActivity {
         listViewConferentes.invalidateViews();
         ArrayAdapter<Conferente>adaptador = new ArrayAdapter<Conferente>(this, R.layout.list_item_text,conferentesFiltrados);
         listViewConferentes.setAdapter(adaptador);
+        nomeConferente.setText("");
     }
 
     public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo){
