@@ -63,6 +63,8 @@ public class NovoConferenteFragment extends Fragment {
         dao = new ConferenteDAO(getContext());
         listViewConferentes = view.findViewById(R.id.listView_conferentes);
         conferentes = dao.obterTodos();
+        conferentesFiltrados.clear();
+        listViewConferentes.invalidateViews();
         conferentesFiltrados.addAll(conferentes);
         ArrayAdapter<Conferente>adaptador = new ArrayAdapter<Conferente>(getContext(), R.layout.list_item_text,conferentesFiltrados);
         listViewConferentes.setAdapter(adaptador);

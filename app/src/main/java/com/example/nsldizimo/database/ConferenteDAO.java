@@ -38,6 +38,20 @@ public class ConferenteDAO {
         return conferentes;
     }
 
+    public List<Conferente>buscaDadosSpinner(){
+        List<Conferente>conferentes = new ArrayList<>();
+        Cursor cursor = banco.query("tb_confer",new String[]{"nomeConfer"},null,null,null,null,null);
+        while (cursor.moveToNext()){
+            Conferente a = new Conferente();
+            a.setNomeConferente(cursor.getString(0));
+            conferentes.add(a);
+        }
+       return conferentes;
+    }
+
+
+
+
     public void excluir(Conferente a){
         banco.delete("tb_confer", "idConfer = ?", new String[]{a.getIdConferente().toString()} );
     }

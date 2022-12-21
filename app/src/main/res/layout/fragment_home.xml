@@ -7,24 +7,62 @@
     tools:context=".activity.ContagemDizimo">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout3"
         android:layout_width="0dp"
-        android:layout_height="383dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.6"
+            android:text="Conferente:" />
+
+        <Spinner
+            android:id="@+id/spnConferentes"
+            android:layout_width="80dp"
+            android:layout_height="37dp"
+            android:layout_gravity="center_vertical"
+
+            android:layout_margin="5dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="30dp"
+            android:layout_height="45sp"
+            android:layout_margin="5dp"
+            android:layout_weight="0.4"
+            android:backgroundTint="@color/black"
+            android:text="Novo"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="402dp"
+        android:layout_height="366dp"
         android:background="@color/calculadora"
         android:orientation="vertical"
         android:paddingBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIncluir"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         tools:context=".Activity.MainActivity">
         <!-- vertical ScrollView to make all the items or views scrollable -->
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="363dp"
+            android:layout_height="360dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="175dp"
             android:scrollbars="none">
@@ -60,13 +98,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="37dp"
 
-                        android:layout_marginRight="5dp"
                         android:layout_weight="0.2"
                         android:gravity="center|start"
+                        android:paddingStart="25dp"
                         android:paddingLeft="10dp"
+
+
                         android:text="Somatório Total:"
-
-
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
@@ -634,7 +672,7 @@
                 <LinearLayout
                     android:id="@+id/eightLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="32dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
@@ -706,16 +744,6 @@
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/buttonIncluir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/incluir"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
@@ -730,34 +758,20 @@
             android:id="@+id/btnLimpar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:paddingEnd="4dp"
+            android:backgroundTint="@color/design_default_color_error"
             android:text="Limpar" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/buttonIncluir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="@string/incluir" />
 
-    <EditText
-        android:id="@+id/NomeConferente"
-        android:layout_width="201dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_iput"
-        android:drawableStart="@drawable/ic_user_24"
-        android:drawablePadding="5dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:hint="@string/Conferente"
-        android:imeOptions="actionNext"
-        android:inputType="text"
-        android:paddingLeft="10dp"
-        android:singleLine="false"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/buttonIncluir"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnDel"
@@ -771,8 +785,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:ignore="TouchTargetSizeCheck" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
