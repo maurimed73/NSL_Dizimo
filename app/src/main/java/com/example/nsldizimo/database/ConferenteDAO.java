@@ -49,9 +49,6 @@ public class ConferenteDAO {
        return conferentes;
     }
 
-
-
-
     public void excluir(Conferente a){
         banco.delete("tb_confer", "idConfer = ?", new String[]{a.getIdConferente().toString()} );
     }

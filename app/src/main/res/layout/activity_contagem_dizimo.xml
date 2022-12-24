@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIncluir"
+        app:layout_constraintTop_toBottomOf="@+id/btnsalvar"
         tools:context=".Activity.MainActivity">
         <!-- vertical ScrollView to make all the items or views scrollable -->
 
@@ -707,7 +707,7 @@
 
 
     <Button
-        android:id="@+id/buttonIncluir"
+        android:id="@+id/btnsalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -755,7 +755,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/buttonIncluir"
+        app:layout_constraintStart_toEndOf="@+id/btnsalvar"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
 

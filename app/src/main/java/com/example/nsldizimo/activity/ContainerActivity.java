@@ -21,15 +21,13 @@ public class ContainerActivity extends AppCompatActivity {
     NovoConferenteFragment novoConferenteFragment = new NovoConferenteFragment();
     HomeFragment homeFragment = new HomeFragment();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.nsldizimo.R.layout.activity_container);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameConteudo, homeFragment).commit();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

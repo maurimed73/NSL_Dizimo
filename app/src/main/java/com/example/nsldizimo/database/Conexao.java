@@ -17,6 +17,20 @@ public class Conexao extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table tb_confer(idConfer integer primary key autoincrement, nomeConfer varchar(50))");
+
+        db.execSQL("create table IF NOT EXISTS tb_dizimo" +
+                " (codigo integer primary key Autoincrement," +
+                " conferente text, " +
+                "valorDuzentos text, " +
+                "valorCem text, " +
+                "valorCinquenta text, " +
+                "valorVinte text, " +
+                "valorDez text, " +
+                "valorCinco text, " +
+                "valorDois text, " +
+                "valorMoedas text, " +
+                "dataContagem text, " +
+                "valorSomaTotal text) ");
     }
 
     @Override

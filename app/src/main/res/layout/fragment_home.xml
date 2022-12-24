@@ -17,25 +17,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="16dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="0.6"
-            android:text="Conferente:" />
-
         <Spinner
             android:id="@+id/spnConferentes"
             android:layout_width="80dp"
             android:layout_height="37dp"
-            android:layout_gravity="center_vertical"
 
-            android:layout_margin="5dp"
-            android:layout_weight="1" />
+            android:layout_gravity="right|center_vertical"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:spinnerMode="dialog" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnNovoConferente"
             android:layout_width="30dp"
             android:layout_height="45sp"
             android:layout_margin="5dp"
@@ -164,6 +157,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="0.7"
                         android:background="@drawable/custom_iput"
+                        android:enabled="false"
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:paddingLeft="10dp"
@@ -191,8 +185,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="0.6"
                         android:gravity="end"
-                        android:hint="0.00"
+                        android:hint="0.0"
                         android:paddingLeft="10dp"
+                        android:text="0.0"
                         android:textAlignment="textEnd"
                         android:textColor="@color/black" />
 
@@ -245,6 +240,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="0.7"
                         android:background="@drawable/custom_iput"
+                        android:enabled="false"
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:paddingLeft="10dp"
@@ -271,8 +267,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="0.6"
                         android:gravity="end"
-                        android:hint="0.00"
+                        android:hint="0.0"
                         android:paddingLeft="10dp"
+                        android:text="0.0"
                         android:textAlignment="textEnd"
                         android:textColor="@color/black" />
 
@@ -323,6 +320,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="0.7"
                         android:background="@drawable/custom_iput"
+                        android:enabled="false"
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:paddingLeft="10dp"
@@ -349,8 +347,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="0.6"
                         android:gravity="end"
-                        android:hint="0.00"
+                        android:hint="0.0"
                         android:paddingLeft="10dp"
+                        android:text="0.0"
                         android:textAlignment="textEnd"
                         android:textColor="@color/black" />
 
@@ -400,6 +399,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="0.7"
                         android:background="@drawable/custom_iput"
+                        android:enabled="false"
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:paddingLeft="10dp"
@@ -426,8 +426,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="0.6"
                         android:gravity="end"
-                        android:hint="0.00"
+                        android:hint="0.0"
                         android:paddingLeft="10dp"
+                        android:text="0.0"
                         android:textAlignment="textEnd"
                         android:textColor="@color/black" />
 
@@ -477,6 +478,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="0.7"
                         android:background="@drawable/custom_iput"
+                        android:enabled="false"
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:paddingLeft="10dp"
@@ -503,8 +505,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="0.6"
                         android:gravity="end"
-                        android:hint="0.00"
+                        android:hint="0.0"
                         android:paddingLeft="10dp"
+                        android:text="0.0"
                         android:textAlignment="textEnd"
                         android:textColor="@color/black" />
 
@@ -554,6 +557,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="0.7"
                         android:background="@drawable/custom_iput"
+                        android:enabled="false"
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:paddingLeft="10dp"
@@ -580,8 +584,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="0.6"
                         android:gravity="end"
-                        android:hint="0.00"
+                        android:hint="0.0"
                         android:paddingLeft="10dp"
+                        android:text="0.0"
                         android:textAlignment="textEnd"
                         android:textColor="@color/black" />
 
@@ -629,6 +634,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="0.7"
                         android:background="@drawable/custom_iput"
+                        android:enabled="false"
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:paddingLeft="10dp"
@@ -655,8 +661,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="0.6"
                         android:gravity="end"
-                        android:hint="0.00"
+                        android:hint="0.0"
                         android:paddingLeft="10dp"
+                        android:text="0.0"
                         android:textAlignment="textEnd"
                         android:textColor="@color/black" />
 
@@ -706,6 +713,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="0.7"
                         android:background="@drawable/custom_iput"
+                        android:enabled="false"
                         android:imeOptions="actionNext"
                         android:inputType="number|numberDecimal"
                         android:paddingLeft="10dp"
@@ -732,8 +740,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="0.6"
                         android:gravity="end"
-                        android:hint="0.00"
+                        android:hint="0.0"
                         android:paddingLeft="10dp"
+                        android:text="0.0"
                         android:textAlignment="textEnd"
                         android:textColor="@color/black" />
                 </LinearLayout>
@@ -764,7 +773,7 @@
             android:text="Limpar" />
 
         <Button
-            android:id="@+id/buttonIncluir"
+            android:id="@+id/btnsalvar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
