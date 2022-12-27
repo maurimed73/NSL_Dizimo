@@ -14,7 +14,8 @@ public class Conferida implements Serializable {
     public double valorCinco;
     public double valorDois;
     public double valorMoedas;
-    public double valorTotal;
+    public String valorTotal;
+    public String dataContagem;
 
     public Conferida() {
         this.codigo = codigo;
@@ -28,8 +29,14 @@ public class Conferida implements Serializable {
         this.valorDois = valorDois;
         this.valorMoedas = valorMoedas;
         this.valorTotal= valorTotal;
+        this.dataContagem = dataContagem;
     }
 
+
+    @Override
+    public String toString() {
+        return ""+ nomeConferente ;
+    }
 
     public int getCodigo() {return codigo;}
 
@@ -107,11 +114,20 @@ public class Conferida implements Serializable {
         this.valorMoedas = valorMoedas;
     }
 
-    public double getValorTotal() {
+    public String getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(String valorTotal) {
         this.valorTotal = valorTotal;
     }
+
+    public String getDataContagem() {
+        return dataContagem;
+    }
+
+    public void setDataContagem(String dataContagem) {
+        this.dataContagem = dataContagem;
+    }
+
 }

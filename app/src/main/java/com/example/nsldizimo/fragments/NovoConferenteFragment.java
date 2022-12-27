@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -46,7 +47,7 @@ public class NovoConferenteFragment extends Fragment {
     public static Conferente conferenteAtualizar;
     public static String idConfer;
     public ImageButton btnSalvar; public MenuInflater menuInflater;
-
+    public boolean dadosvalidados;
 
     public NovoConferenteFragment() {
     }
@@ -76,12 +77,16 @@ public class NovoConferenteFragment extends Fragment {
             public void onClick(View v) {
                 if (idConfer == null){
                     Conferente a = new Conferente();
-                    a.setNomeConferente(nomeConferente.getText().toString());
-                    long id = dao.inserir(a);
-                    Toast.makeText(getContext(), "Conferente inserido", Toast.LENGTH_SHORT).show();
-                    atualizaListView();
-                    closeKeyboard(view);
-                    idConfer=null;
+                    dadosvalidados = validarFormulario();
+                    if (dadosvalidados){
+                        a.setNomeConferente(nomeConferente.getText().toString());
+                        long id = dao.inserir(a);
+                        Toast.makeText(getContext(), "Conferente inserido", Toast.LENGTH_SHORT).show();
+                        atualizaListView();
+                        closeKeyboard(view);
+                        idConfer=null;
+                   }
+
 
 
                 }
@@ -96,8 +101,20 @@ public class NovoConferenteFragment extends Fragment {
                 }
             }
         });
-
         return view;
+    }
+
+    private boolean validarFormulario() {
+//Regra de validação  - usar classe TextUtils
+        boolean retorno = false;
+        //edit novoConferente
+        if(!TextUtils.isEmpty(nomeConferente.getText().toString())){
+            return true;
+        }else{
+            nomeConferente.setError("*");
+            nomeConferente.requestFocus();
+        }
+        return retorno;
     }
 
     @Override
@@ -122,9 +139,6 @@ public class NovoConferenteFragment extends Fragment {
         }
         return super.onContextItemSelected(item);
     }
-
-
-
 
     public void atualizaListView() {
         conferentes = dao.obterTodos();

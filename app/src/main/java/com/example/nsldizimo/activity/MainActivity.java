@@ -84,11 +84,6 @@ public class MainActivity extends AppCompatActivity {
         mMediaPlayer = null;
     }
 
-    public void contarDizimo(View view){
-            Intent it = new Intent(this, ContagemDizimo.class);
-            startActivity(it);
-    }
-
 
 
 }
