@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.example.nsldizimo.R;
 import com.example.nsldizimo.database.Conexao;
+import com.example.nsldizimo.database.ConfereciasDAO;
 import com.example.nsldizimo.database.ConferenteDAO;
 import com.example.nsldizimo.model.Conferente;
 
@@ -40,10 +41,11 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     public Spinner spinner;
-
+    Button btnDel;
     private Animation animation;
     private List<Conferente> conferentes;
     private ConferenteDAO dao;
+    private ConfereciasDAO daoConferencias;
     private List<Conferente>conferentesFiltrados = new ArrayList<>();
 
     EditText qtd200,qtd100,qtd50,qtd20,qtd10,qtd5,qtd2,moedas;
@@ -91,6 +93,15 @@ public class HomeFragment extends Fragment {
         resultadoSomaTotal = (TextView)view.findViewById(R.id.SomaTotal);
         incluir = (Button) view.findViewById(R.id.btnsalvar);
         novoConfer = (Button)view.findViewById(R.id.btnNovoConferente);
+        btnDel = (Button) view.findViewById(R.id.btnDel);
+
+
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apagarTabela(getView());
+            }
+        });
 
 
 
@@ -507,6 +518,13 @@ public class HomeFragment extends Fragment {
         spinner.setAdapter(adaptador);
     }
 
+    private void apagarTabela(View v){
+        //daoConferencias = new ConfereciasDAO(getContext());
+        //daoConferencias.apagarTabela();
+
+
+    }
+
     private void limparCampos(View v){
         resultado200.setText("");
         resultado100.setText("");
@@ -575,6 +593,8 @@ public class HomeFragment extends Fragment {
         String valor = null;
 
         if(spinner != null && spinner.getSelectedItem() !=null && spinner.getSelectedItemPosition() != -1 ) {
+
+
 
             Conexao admin = new Conexao(getContext());
             SQLiteDatabase bd = admin.getWritableDatabase();

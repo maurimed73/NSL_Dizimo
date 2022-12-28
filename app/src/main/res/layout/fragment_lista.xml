@@ -10,12 +10,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="390dp"
-        android:layout_height="262dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="356dp"
+        android:layout_height="276dp"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -32,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imgBtnCalendar2"
+        android:id="@+id/imgBtnCedulas"
         android:layout_width="85dp"
         android:layout_height="75dp"
         android:layout_marginTop="8dp"
@@ -81,9 +79,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Cédulas"
-        app:layout_constraintEnd_toEndOf="@+id/imgBtnCalendar2"
-        app:layout_constraintStart_toStartOf="@+id/imgBtnCalendar2"
-        app:layout_constraintTop_toBottomOf="@+id/imgBtnCalendar2" />
+        app:layout_constraintEnd_toEndOf="@+id/imgBtnCedulas"
+        app:layout_constraintStart_toStartOf="@+id/imgBtnCedulas"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtnCedulas" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -108,30 +106,31 @@
                 android:id="@+id/txtDataAtual"
                 android:layout_width="106dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="92dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtValorSomadoDataAtual"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtValorSomadoDataAtual"
-                android:layout_width="51dp"
+                android:layout_width="100dp"
                 android:layout_height="27dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1.7"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/txtDataAtual"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.07"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/txtDataAtual"
-                app:layout_constraintTop_toTopOf="@+id/txtDataAtual"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

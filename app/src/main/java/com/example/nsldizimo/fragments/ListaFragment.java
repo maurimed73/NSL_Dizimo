@@ -2,6 +2,7 @@ package com.example.nsldizimo.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 
@@ -27,15 +28,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nsldizimo.R;
+import com.example.nsldizimo.activity.CedulasActivity;
 import com.example.nsldizimo.activity.RecyclerItemClickListener;
 import com.example.nsldizimo.adapter.MyAdapter;
 import com.example.nsldizimo.database.ConfereciasDAO;
 import com.example.nsldizimo.model.Conferida;
 
+import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ListaFragment extends Fragment {
 
@@ -44,9 +54,9 @@ public class ListaFragment extends Fragment {
     private List<Conferida> conferidas;
     private List<Conferida>conferidasFiltradas = new ArrayList<>();
     private RecyclerView recyclerView;
-    TextView txtDataAtual;
+    TextView txtDataAtual,txtSomaTotal;
     String filtroData = null;
-    ImageButton btnCalendar, btnTodas;
+    ImageButton btnCalendar, btnTodas,btnCedulas;
     NovoConferenteFragment novoConferenteFragment;
     ListaFragment listaFragment;
 
@@ -59,15 +69,23 @@ public class ListaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lista, container, false);
-        filtroData = null;
 
+        filtroData = null;
 
 
 
         // módulo calendar
         txtDataAtual = view.findViewById(R.id.txtDataAtual);
+
+        SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
+        Date data = new Date();
+
+        System.out.println(""+data);
+        txtDataAtual.setText(formataData.format(data));
+        txtSomaTotal = view.findViewById(R.id.txtValorSomadoDataAtual);
         btnCalendar = view.findViewById(R.id.imgBtnCalendar);
         btnTodas = view.findViewById(R.id.imgBtnTodas);
+        btnCedulas = view.findViewById(R.id.imgBtnCedulas);
 
 
 
@@ -75,7 +93,7 @@ public class ListaFragment extends Fragment {
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Clicou em calendario", Toast.LENGTH_SHORT).show();
+
                 final Calendar c = Calendar.getInstance();
                 int mYear = c.get(Calendar.YEAR);
                 int mMonth = c.get(Calendar.MONTH);
@@ -106,14 +124,32 @@ public class ListaFragment extends Fragment {
         btnTodas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                filtroData = null;
+
+                Date data = new Date();
+                SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
+
+                filtroData = formataData.format(data);
+                txtDataAtual.setText(filtroData);
+
                 listarTodas(getView(),filtroData);
+
+            }
+        });
+
+        btnCedulas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), CedulasActivity.class);
+                Bundle parametros = new Bundle();
+                parametros.putSerializable("campos", (Serializable) conferidas);
+                i.putExtras(parametros);
+                startActivity(i);
             }
         });
 
         //módulo buscar listagem
         dao = new ConfereciasDAO(getContext());
-        listarTodas(view,filtroData);
+        listarTodas(view,txtDataAtual.getText().toString());
 
 
         //módulo RecyclerView
@@ -145,6 +181,14 @@ public class ListaFragment extends Fragment {
 
     private void listarTodas(View view, String txtDataAtual) {
         conferidas = dao.conferenciasFiltradasData(txtDataAtual);
+        String valor = dao.calcularSoma(txtDataAtual);
+
+
+
+
+        txtSomaTotal.setText(valor);
+
+        //String valor = conferidas.get(0).getValorTotal().toString();
         MyAdapter adapter = new MyAdapter(conferidas);
         //configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());

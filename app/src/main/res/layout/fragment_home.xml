@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ContagemDizimo">
+    tools:context=".fragments.HomeFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -786,8 +786,8 @@
         android:id="@+id/btnDel"
         android:layout_width="72dp"
         android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_weight="0.2"
         android:text="del"
         android:textSize="8sp"
