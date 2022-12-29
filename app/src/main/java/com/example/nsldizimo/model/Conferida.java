@@ -13,7 +13,7 @@ public class Conferida implements Serializable {
     public double valorDez;
     public double valorCinco;
     public double valorDois;
-    public double valorMoedas;
+    public String valorMoedas;
     public String valorTotal;
     public String dataContagem;
 
@@ -106,11 +106,9 @@ public class Conferida implements Serializable {
         this.valorDois = valorDois;
     }
 
-    public double getValorMoedas() {
-        return valorMoedas;
-    }
+    public String getValorMoedas() {return valorMoedas;}
 
-    public void setValorMoedas(double valorMoedas) {
+    public void setValorMoedas(String valorMoedas) {
         this.valorMoedas = valorMoedas;
     }
 

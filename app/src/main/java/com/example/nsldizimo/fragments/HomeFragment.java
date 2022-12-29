@@ -519,8 +519,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void apagarTabela(View v){
-        //daoConferencias = new ConfereciasDAO(getContext());
-        //daoConferencias.apagarTabela();
+        daoConferencias = new ConfereciasDAO(getContext());
+        daoConferencias.apagarTabela();
 
 
     }

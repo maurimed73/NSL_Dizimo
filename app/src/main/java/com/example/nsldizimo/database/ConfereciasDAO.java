@@ -42,7 +42,7 @@ public class ConfereciasDAO {
             a.setValorDez(cursor.getDouble(6));
             a.setValorCinco(cursor.getDouble(7));
             a.setValorDois(cursor.getDouble(8));
-            a.setValorMoedas(cursor.getDouble(9));
+            a.setValorMoedas(cursor.getString(9));
             a.setDataContagem(cursor.getString(10));
             a.setValorTotal(cursor.getString(11));
             conferidas.add(a);
