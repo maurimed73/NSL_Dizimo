@@ -33,6 +33,7 @@ import com.example.nsldizimo.activity.RecyclerItemClickListener;
 import com.example.nsldizimo.adapter.MyAdapter;
 import com.example.nsldizimo.database.ConfereciasDAO;
 import com.example.nsldizimo.model.Conferida;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -59,6 +60,10 @@ public class ListaFragment extends Fragment {
     ImageButton btnCalendar, btnTodas,btnCedulas;
     NovoConferenteFragment novoConferenteFragment;
     ListaFragment listaFragment;
+    Snackbar snackbar;
+    String dia = "";
+    String mes = "";
+
 
     public ListaFragment() {
         // Required empty public constructor
@@ -72,32 +77,28 @@ public class ListaFragment extends Fragment {
 
         filtroData = null;
 
-
-
         // módulo calendar
         txtDataAtual = view.findViewById(R.id.txtDataAtual);
 
         SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
         Date data = new Date();
 
-        System.out.println(""+data);
+        System.out.println("DATA: "+data);
         txtDataAtual.setText(formataData.format(data));
         txtSomaTotal = view.findViewById(R.id.txtValorSomadoDataAtual);
         btnCalendar = view.findViewById(R.id.imgBtnCalendar);
         btnTodas = view.findViewById(R.id.imgBtnTodas);
         btnCedulas = view.findViewById(R.id.imgBtnCedulas);
 
-
-
         // pegando a data atual ou retroativa
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 final Calendar c = Calendar.getInstance();
                 int mYear = c.get(Calendar.YEAR);
                 int mMonth = c.get(Calendar.MONTH);
                 int mDay = c.get(Calendar.DAY_OF_MONTH);
+
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
@@ -106,19 +107,29 @@ public class ListaFragment extends Fragment {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
 
-                                txtDataAtual.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                                monthOfYear = monthOfYear+1;
+
+                                if(dayOfMonth < 10){
+                                    dia = "0"+dayOfMonth;
+                                }else {
+                                    dia = ""+dayOfMonth;
+                                }
+
+                                if(monthOfYear < 10){
+                                    mes = "0"+monthOfYear;
+                                }else {
+                                    mes = ""+monthOfYear;
+                                }
+
+                                txtDataAtual.setText(dia + "-" + (mes) + "-" + year);
                                 filtroData = ""+txtDataAtual.getText().toString();
 
                                 listarTodas(getView(),filtroData);
-
-
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
-
-
+                mMonth = 0;
             }
-
         });
 
         btnTodas.setOnClickListener(new View.OnClickListener() {
@@ -139,11 +150,17 @@ public class ListaFragment extends Fragment {
         btnCedulas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), CedulasActivity.class);
-                Bundle parametros = new Bundle();
-                parametros.putSerializable("campos", (Serializable) conferidas);
-                i.putExtras(parametros);
-                startActivity(i);
+                if(conferidas.size() >= 1){
+                    Intent i = new Intent(getContext(), CedulasActivity.class);
+                    Bundle parametros = new Bundle();
+                    parametros.putSerializable("campos", (Serializable) conferidas);
+                    i.putExtras(parametros);
+                    startActivity(i);
+                }else{
+                    snackbar = Snackbar.make(v,"Sem conferencias a serem contabilizadas", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+
             }
         });
 
@@ -182,10 +199,6 @@ public class ListaFragment extends Fragment {
     private void listarTodas(View view, String txtDataAtual) {
         conferidas = dao.conferenciasFiltradasData(txtDataAtual);
         String valor = dao.calcularSoma(txtDataAtual);
-
-
-
-
         txtSomaTotal.setText(valor);
 
         //String valor = conferidas.get(0).getValorTotal().toString();

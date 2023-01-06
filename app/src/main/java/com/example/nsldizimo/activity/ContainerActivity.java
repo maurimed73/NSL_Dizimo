@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.nsldizimo.R;
 
+import com.example.nsldizimo.fragments.ColetaFragment;
 import com.example.nsldizimo.fragments.HomeFragment;
 import com.example.nsldizimo.fragments.ListaFragment;
 import com.example.nsldizimo.fragments.NovoConferenteFragment;
@@ -22,6 +24,7 @@ public class ContainerActivity extends AppCompatActivity {
     ListaFragment listaFragment = new ListaFragment();
     NovoConferenteFragment novoConferenteFragment = new NovoConferenteFragment();
     HomeFragment homeFragment = new HomeFragment();
+    ColetaFragment coletaFragment = new ColetaFragment();
 
 
     @Override
@@ -52,6 +55,11 @@ public class ContainerActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameConteudo, homeFragment ).commit();
                         return true;
                 }
+                switch(item.getItemId()){
+                    case R.id.coletas:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameConteudo, coletaFragment ).commit();
+                        return true;
+                }
 
 
 
@@ -66,4 +74,6 @@ public class ContainerActivity extends AppCompatActivity {
 
 
     }
+
+
 }

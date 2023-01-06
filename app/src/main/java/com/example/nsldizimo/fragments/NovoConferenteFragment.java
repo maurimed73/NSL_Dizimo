@@ -32,6 +32,7 @@ import com.example.nsldizimo.database.ConferenteDAO;
 import com.example.nsldizimo.model.Conferente;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class NovoConferenteFragment extends Fragment {
         conferentesFiltrados.clear();
         listViewConferentes.invalidateViews();
         conferentesFiltrados.addAll(conferentes);
-        ArrayAdapter<Conferente>adaptador = new ArrayAdapter<Conferente>(getContext(), R.layout.list_item_text,conferentesFiltrados);
+        ArrayAdapter<Conferente>adaptador = new ArrayAdapter<Conferente>(getContext(),android.R.layout.simple_list_item_1,conferentesFiltrados);
         listViewConferentes.setAdapter(adaptador);
         registerForContextMenu(listViewConferentes);
 
@@ -86,9 +87,6 @@ public class NovoConferenteFragment extends Fragment {
                         closeKeyboard(view);
                         idConfer=null;
                    }
-
-
-
                 }
                 else{
                     conferenteAtualizar.setNomeConferente(nomeConferente.getText().toString());
@@ -145,7 +143,7 @@ public class NovoConferenteFragment extends Fragment {
         conferentesFiltrados.clear();
         conferentesFiltrados.addAll(conferentes);
         listViewConferentes.invalidateViews();
-        ArrayAdapter<Conferente>adaptador = new ArrayAdapter<Conferente>(getContext(), R.layout.list_item_text,conferentesFiltrados);
+        ArrayAdapter<Conferente>adaptador = new ArrayAdapter<Conferente>(getContext(), android.R.layout.simple_list_item_1,conferentesFiltrados);
         listViewConferentes.setAdapter(adaptador);
         nomeConferente.setText("");
     }

@@ -11,18 +11,30 @@ import android.widget.Button;
 import android.widget.VideoView;
 
 import com.example.nsldizimo.R;
+import com.example.nsldizimo.fragments.ColetaFragment;
+import com.example.nsldizimo.fragments.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
     private VideoView videoBG;
     MediaPlayer mMediaPlayer;
     int mCurrentVideoPosition;
-    Button btnDizimo;
+    Button btnDizimo, btnColeta, btnNovoConferente;
+    ColetaFragment coletaFragment = new ColetaFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnDizimo = (Button)findViewById(R.id.btnDizimo);
+        btnDizimo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iContainer = new Intent(getApplicationContext(), ContainerActivity.class);
+                startActivity(iContainer);
+            }
+        });
+
+
 
         // Hook up the VideoView to our UI.
         videoBG = (VideoView) findViewById(R.id.videoView);

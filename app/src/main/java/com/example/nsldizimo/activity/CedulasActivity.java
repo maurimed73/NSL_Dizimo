@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nsldizimo.R;
+import com.example.nsldizimo.database.ColetasDAO;
+import com.example.nsldizimo.model.Coletas;
+import com.example.nsldizimo.model.Conferente;
 import com.example.nsldizimo.model.Conferida;
 
 import java.text.DecimalFormat;
@@ -42,12 +44,13 @@ public class CedulasActivity extends AppCompatActivity {
     TextView valor200,valor100,valor50,valor20,valor10,valor5,valor2,valorMoedas,txtDataDizimo,txtValorDizimo;
     String data;
     private ListView lstColetas;
+    private ColetasDAO dao;
+    private List<Coletas> coletas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cedulas);
-
 
         txtValorDizimo = findViewById(R.id.txtValorDizimo);
         txtDataDizimo = findViewById(R.id.txtDataDizimo);
@@ -70,23 +73,18 @@ public class CedulasActivity extends AppCompatActivity {
         Bundle parametros = iRecebedora.getExtras();
 
         lstColetas = findViewById(R.id.lstColetas);
-        ArrayList<String>arrayList = new ArrayList<String>();
-        arrayList.add("02-12-2022     R$328,23");
-        arrayList.add("12-12-2022     R$185,20");
-        arrayList.add("22-12-2022     R$452,59");
-        arrayList.add("32-12-2022      R$89,84");
-        arrayList.add("02-12-2022     R$328,23");
-        arrayList.add("12-12-2022     R$185,20");
-        arrayList.add("22-12-2022     R$452,59");
-        arrayList.add("32-12-2022      R$89,84");
-        arrayList.add("02-12-2022     R$328,23");
-        arrayList.add("12-12-2022     R$185,20");
-        arrayList.add("22-12-2022     R$452,59");
-        arrayList.add("32-12-2022      R$89,84");
 
+        ArrayList<String>listaColetas = new ArrayList<String>();
+        listaColetas.add("02-12-2022     R$328,23");
+        listaColetas.add("12-12-2022     R$185,20");
+        listaColetas.add("22-12-2022     R$452,59");
+        listaColetas.add("32-12-2022      R$89,84");
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
-        lstColetas.setAdapter(arrayAdapter);
+        dao = new ColetasDAO(this);
+        coletas = dao.obterTodos();
+
+        ArrayAdapter<Coletas>adaptador = new ArrayAdapter<Coletas>(this,android.R.layout.simple_list_item_1,coletas);
+        lstColetas.setAdapter(adaptador);
 
 
         if(parametros != null){
@@ -196,8 +194,10 @@ public class CedulasActivity extends AppCompatActivity {
         valorMoedas.setText("R$"+formatter.format(Double.parseDouble(String.valueOf(resMoedas*1))));
         txtValorDizimo.setText("R$"+formatter.format(Double.parseDouble(String.valueOf(resTotal))));
         txtDataDizimo.setText(""+ data);
+    }
 
-
+    public void voltarInicio(View v){
+        finish();
     }
 
 }

@@ -16,16 +16,16 @@ public class Conferente implements Serializable {
         this.idConferente = idConferente;
     }
 
-    @Override
-    public String toString() {
-        return ""+ nomeConferente;
-    }
-
     public String getNomeConferente() {
         return nomeConferente;
     }
 
     public void setNomeConferente(String nomeConferente) {
         this.nomeConferente = nomeConferente;
+    }
+
+    @Override
+    public String toString() {
+        return ""+ nomeConferente;
     }
 }

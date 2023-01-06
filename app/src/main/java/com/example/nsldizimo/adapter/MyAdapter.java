@@ -34,8 +34,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             nome = itemView.findViewById(R.id.name);
             valorTotal = itemView.findViewById(R.id.valor);
             data = itemView.findViewById(R.id.data);
-
-
         }
     }
 
