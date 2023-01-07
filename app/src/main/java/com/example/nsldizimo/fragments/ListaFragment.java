@@ -63,6 +63,7 @@ public class ListaFragment extends Fragment {
     Snackbar snackbar;
     String dia = "";
     String mes = "";
+    String datanula = "";
 
 
     public ListaFragment() {
@@ -99,6 +100,7 @@ public class ListaFragment extends Fragment {
                 int mMonth = c.get(Calendar.MONTH);
                 int mDay = c.get(Calendar.DAY_OF_MONTH);
 
+                datanula = "";
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
@@ -140,9 +142,10 @@ public class ListaFragment extends Fragment {
                 SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
 
                 filtroData = formataData.format(data);
-                txtDataAtual.setText(filtroData);
+                txtDataAtual.setText("");
+                datanula = "dataNula";
 
-                listarTodas(getView(),filtroData);
+                listarTodas(getView(),datanula);
 
             }
         });
@@ -150,15 +153,21 @@ public class ListaFragment extends Fragment {
         btnCedulas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(conferidas.size() >= 1){
+                if(conferidas.size() >= 1  && datanula != "dataNula" ){
                     Intent i = new Intent(getContext(), CedulasActivity.class);
                     Bundle parametros = new Bundle();
                     parametros.putSerializable("campos", (Serializable) conferidas);
                     i.putExtras(parametros);
                     startActivity(i);
                 }else{
-                    snackbar = Snackbar.make(v,"Sem conferencias a serem contabilizadas", Snackbar.LENGTH_LONG);
-                    snackbar.show();
+                    if(datanula == "dataNula"){
+                        snackbar = Snackbar.make(v,"Defina data através do Filtrar Data", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                    }else{
+                        snackbar = Snackbar.make(v,"Sem conferencias a serem contabilizadas", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                    }
+
                 }
 
             }
@@ -171,7 +180,6 @@ public class ListaFragment extends Fragment {
 
         //módulo RecyclerView
         recyclerView = view.findViewById(R.id.recyclerview);
-
         //evento de Click
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(),recyclerView,new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
@@ -210,9 +218,9 @@ public class ListaFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter( adapter );
-
-
     }
+
+
 
 
 }

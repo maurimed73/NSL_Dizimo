@@ -83,6 +83,7 @@ public class CedulasActivity extends AppCompatActivity {
         dao = new ColetasDAO(this);
         coletas = dao.obterTodos();
 
+
         ArrayAdapter<Coletas>adaptador = new ArrayAdapter<Coletas>(this,android.R.layout.simple_list_item_1,coletas);
         lstColetas.setAdapter(adaptador);
 

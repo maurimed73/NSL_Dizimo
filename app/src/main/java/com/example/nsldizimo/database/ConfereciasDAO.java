@@ -25,7 +25,7 @@ public class ConfereciasDAO {
     public List<Conferida> conferenciasFiltradasData(String data) {
         Cursor cursor;
         ArrayList<Conferida> conferidas = new ArrayList<>();
-        if(data != null){
+        if(data != "dataNula"){
              cursor = banco.query("tb_dizimo",new String[]{"codigo","conferente","valorDuzentos","valorCem","valorCinquenta","valorVinte","valorDez","valorCinco","valorDois","valorMoedas","dataContagem","valorSomaTotal"},"dataContagem = ?", new String[]{data},null,null,null,null);
         }else{
              cursor = banco.query("tb_dizimo",new String[]{"codigo","conferente","valorDuzentos","valorCem","valorCinquenta","valorVinte","valorDez","valorCinco","valorDois","valorMoedas","dataContagem","valorSomaTotal"},null,null,null,null,null);

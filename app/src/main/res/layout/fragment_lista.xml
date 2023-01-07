@@ -24,6 +24,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/white"
+        android:elevation="5dp"
         android:scaleType="centerCrop"
         android:src="@drawable/calendar"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +36,9 @@
         android:layout_height="75dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/white"
+        android:elevation="5dp"
         android:scaleType="centerCrop"
+
         android:src="@drawable/dolar"
         app:layout_constraintEnd_toStartOf="@+id/imgBtnTodas"
         app:layout_constraintStart_toEndOf="@+id/imgBtnCalendar"
@@ -48,6 +51,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/white"
+        android:elevation="5dp"
         android:scaleType="centerCrop"
         android:src="@drawable/all_ico"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,16 +110,15 @@
                 android:id="@+id/txtDataAtual"
                 android:layout_width="106dp"
                 android:layout_height="27dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtValorSomadoDataAtual"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/txtValorSomadoDataAtual"

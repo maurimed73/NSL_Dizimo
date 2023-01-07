@@ -18,7 +18,13 @@ public class Conexao extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table IF NOT EXISTS tb_confer(idConfer integer primary key autoincrement, nomeConfer varchar(50))");
 
-        db.execSQL("create table IF NOT EXISTS tb_coleta(idColeta integer primary key autoincrement, valorColeta varchar(30), dataColeta varchar(20))");
+        db.execSQL("create table IF NOT EXISTS tb_coleta" +
+                "(idColeta integer primary key autoincrement," +
+                " valorColeta Real," +
+                " dataColeta Varchar(20),"+
+                " dia Integer," +
+                " mes Integer," +
+                " ano Integer)");
 
         db.execSQL("create table IF NOT EXISTS tb_dizimo" +
                 " (codigo integer primary key Autoincrement," +
